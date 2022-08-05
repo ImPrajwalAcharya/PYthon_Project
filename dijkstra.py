@@ -18,15 +18,15 @@ def dijkstra(graph,start,goal):
                 minNode = node
         for childNode, weight in graph[minNode].items():
             egdes=minNode+childNode
-            l= future_time_calc(traffic_lights_data[egdes][0], traffic_lights_data[egdes][1], weight+shortest_distance[minNode])
-            # print(l)
+            l= future_time_calc(traffic_lights_data[egdes][0], traffic_lights_data[egdes][1], traffic_lights_data[egdes][2],weight+shortest_distance[minNode])
+            print(egdes+":"+str(l)+"-------->"+str(weight))
             if l[1]=='Green':
                 if weight + shortest_distance[minNode] < shortest_distance[childNode]:
                         shortest_distance[childNode] = weight + shortest_distance[minNode]
                         predecessor[childNode] = minNode
             else:
-                if weight + shortest_distance[minNode]+120-l[0] < shortest_distance[childNode]:
-                        shortest_distance[childNode] = weight + shortest_distance[minNode]+120-l[0]
+                if weight + shortest_distance[minNode]+traffic_lights_data[egdes][2]-l[0] < shortest_distance[childNode]:
+                        shortest_distance[childNode] = weight + shortest_distance[minNode]+traffic_lights_data[egdes][2]-l[0]
                         predecessor[childNode] = minNode
         unseenNodes.pop(minNode)
     currentNode = goal

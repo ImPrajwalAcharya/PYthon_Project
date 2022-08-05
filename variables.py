@@ -13,71 +13,24 @@ graph={
     # 'g':{'h':200},
     # 'h':{'g':200},
 }
-egde=[]
-traffic_lights_data={}
-for i in graph.keys():
-	for j in graph[i].keys():
-		egde.append(i+j)
-for i in egde:
-	traffic_lights_data[i]=[10,'Red']
+# egde=[]
+# traffic_lights_data={}
+# for i in graph.keys():
+# 	for j in graph[i].keys():
+# 		egde.append(i+j)
+# for i in egde:
+# 	traffic_lights_data[i]=[10,'Red',120]
 # print(traffic_lights_data)
-# traffic_lights_data={ 
-#     'ab':[10,'Red'],
-# 	'ac':[10,'Red'],
-# 	'ad':[10,'Red'],
-# 	'ae':[10,'Red'],
-# 	'af':[10,'Red'],
-# 	'ag':[10,'Red'],
-# 	'ah':[10,'Red'],
-# 	'ba':[10,'Red'],
-# 	'bc':[10,'Red'],
-# 	'bd':[10,'Red'],
-# 	'be':[10,'Red'],
-# 	'bf':[10,'Red'],
-# 	'bg':[10,'Red'],
-# 	'bh':[10,'Red'],
-# 	'ca':[10,'Red'],
-# 	'cb':[10,'Red'],
-# 	'cd':[10,'Red'],
-# 	'ce':[10,'Red'],
-# 	'cf':[10,'Red'],
-# 	'cg':[10,'Red'],
-# 	'ch':[10,'Red'],
-# 	'da':[10,'Red'],
-# 	'db':[10,'Red'],
-# 	'dc':[10,'Red'],
-# 	'de':[10,'Red'],
-# 	'df':[10,'Red'],
-# 	'dg':[10,'Red'],
-# 	'dh':[10,'Red'],
-# 	'ea':[10,'Red'],
-# 	'eb':[10,'Red'],
-# 	'ec':[10,'Red'],
-# 	'ed':[10,'Red'],
-# 	'ef':[10,'Red'],
-#     'eh':[10,'Red'],
-# 	'eg':[10,'Red'],
-# 	'fa':[10,'Red'],
-# 	'fb':[10,'Red'],
-# 	'fc':[10,'Red'],
-# 	'fd':[10,'Red'],
-# 	'fe':[10,'Red'],
-# 	'fg':[10,'Red'],
-# 	'fh':[10,'Red'],
-# 	'ga':[10,'Red'],
-# 	'gb':[10,'Red'],
-# 	'gc':[10,'Red'],
-# 	'gd':[10,'Red'],
-# 	'ge':[10,'Red'],
-# 	'gf':[10,'Red'],
-# 	'gh':[10,'Red'],
-# 	'ha':[10,'Red'],
-# 	'hb':[10,'Red'],
-# 	'hc':[10,'Red'],
-# 	'hd':[10,'Red'],
-# 	'he':[10,'Red'],
-# 	'hf':[10,'Red'],
-# 	'hg':[10,'Red'],}
+traffic_lights_data={ 
+    'ab':[10,'Red',820],'ac':[10,'Red',10],'ad':[10,'Red',10],'ae':[10,'Red',120],'af':[10,'Red',120],'ag':[10,'Red',120],'ah':[10,'Red',120],
+	'ba':[10,'Red',120],'bc':[10,'Red',120],'bd':[10,'Red',10],'be':[10,'Red',120],'bf':[10,'Red',120],'bg':[10,'Red',120],'bh':[10,'Red',120],
+	'ca':[10,'Red',120],'cb':[10,'Red',120],'cd':[10,'Red',120],'ce':[10,'Red',120],'cf':[10,'Red',120],'cg':[10,'Red',120],'ch':[10,'Red',120],
+	'da':[10,'Red',120],'db':[10,'Red',120],'dc':[10,'Red',120],'de':[10,'Red',120],'df':[10,'Red',120],'dg':[10,'Red',120],'dh':[10,'Red',120],
+	'ea':[10,'Red',120],'eb':[10,'Red',120],'ec':[10,'Red',120],'ed':[10,'Red',120],'ef':[10,'Red',120],'eh':[10,'Red',120],'eg':[10,'Red',120],
+	'fa':[10,'Red',120],'fb':[10,'Red',120],'fc':[10,'Red',120],'fd':[10,'Red',120],'fe':[10,'Red',120],'fg':[10,'Red',120],'fh':[10,'Red',120],
+	'ga':[10,'Red',120],'gb':[10,'Red',120],'gc':[10,'Red',120],'gd':[10,'Red',120],'ge':[10,'Red',120],'gf':[10,'Red',120],'gh':[10,'Red',120],
+	'ha':[10,'Red',120],'hb':[10,'Red',120],'hc':[10,'Red',120],'hd':[10,'Red',120],'he':[10,'Red',120],'hf':[10,'Red',120],'hg':[10,'Red',120],
+	}
 
 # distance={
 # 	'ab':200,
@@ -95,17 +48,17 @@ for i in egde:
 # 	'fh':800,
 # 	'gh':200
 # }
-def future_time_calc(instant_time,condition_of_light,time_to_reach_to_lights):
+def future_time_calc(instant_time,condition_of_light,time_cycle,time_to_reach_to_lights):
 	for i in range(time_to_reach_to_lights):
 		instant_time+=1
-		if (instant_time>120):
-			instant_time=instant_time%120
+		if (instant_time>time_cycle):
+			instant_time=instant_time%time_cycle
 			if condition_of_light=='Red':
 				condition_of_light='Green'
 			else:
 				condition_of_light='Red'
 		
-	returnvar=[instant_time,condition_of_light]
+	returnvar=[instant_time,condition_of_light,time_cycle]
 	return returnvar
 # speed=10
 # time_to_reach_to_lights=[]
